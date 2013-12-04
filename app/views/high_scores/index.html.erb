@@ -1,0 +1,72 @@
+<h1>Listing <small>high_scores</small></h1>
+
+<p class="lead text-warning">Here's the opening paragraph...it's really <em>important</em></p>
+<p class="text-success">The rest of this is important too, but let's be honest - nothing's as important as the <strong>first paragraph</strong></p>
+
+<p class="text-left text-muted">Here's some left text</p>
+<p class="text-center text-primary">And some center text</p>
+<p class="text-right lead text-info">Don't forget about me!</p>
+
+<p class="text-danger">Danger danger will Robinson</p>
+
+<blockquote><p>Here's a blockquote within a p - it's super special</p></blockquote>
+<blockquote>Here's a blockquote not in a p - doesn't it seem different?</blockquote>
+
+<p>We have a bunch of items <span class="badge"><%=@high_scores.count %></span></p>
+
+<form role="form" class="form-inline">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputFile">File input</label>
+    <input type="file" id="exampleInputFile">
+    <p class="help-block">Example block-level help text here.</p>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"> Check me out
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+</div>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Score</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @high_scores.each do |high_score| %>
+      <tr>
+        <td><%= high_score.game %></td>
+        <td><%= high_score.score %></td>
+        <td><%= link_to 'Show', high_score %></td>
+        <td><%= link_to 'Edit', edit_high_score_path(high_score) %></td>
+        <td><%= link_to 'Destroy', high_score, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New High score', new_high_score_path %>
